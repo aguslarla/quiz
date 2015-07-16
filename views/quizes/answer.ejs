@@ -6,7 +6,10 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1>Bienvenido a <%= title %></h1>
-    <p>El portal donde podrá crear sus propios juegos</p>
+    <h2>Quiz. El juego de las preguntas</h2>
+    <form method="GET" action="quizes/answer">		
+		Respuesta: <%= respuesta %>
+		<a href="quizes/question">Probar de nuevo</a>
+	</form>
   </body>
 </html>
