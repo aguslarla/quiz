@@ -5,8 +5,9 @@
 	<link rel="icon" href="/images/favicon.ico" type="image/x-icon" />    
   </head>
   <body>    
-    <form method="GET" action="/quizes/question">		
-		<h3>Respuesta <%= respuesta %></h3>		
-	</form>
+    <p>
+		<%= respuesta %>
+		<a href="/quizes/<%= quiz.id %>">Volver</a>
+	</p>
   </body>
 </html>
