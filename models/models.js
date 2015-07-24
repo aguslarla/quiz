@@ -16,11 +16,11 @@ var storage	=	process.env.DATABASE_STORAGE;
 var Sequelize = require('sequelize');
 
 // Usar BD Sqlite o Postgres
-var sequelize = new Sequelize(DB_name, user, pwd, {dialect : dialect,
-													,protocol: protocol,
-													,port: port,
-													,host: host,
-													,storage: storage, // sólo SQLite (.env)
+var sequelize = new Sequelize(DB_name, user, pwd, {dialect : dialect
+													,protocol: protocol
+													,port: port
+													,host: host
+													,storage: storage // sólo SQLite (.env)
 													,omitNull: true}); // sólo Postgres
 
 
