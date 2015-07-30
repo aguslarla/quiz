@@ -14,9 +14,17 @@ exports.load = function(req, res, next, quizId){
 
 // GET /quizes
 exports.index = function(req, res){
-	models.Quiz.findAll().then(function(quizes){
-		res.render('quizes/index.ejs', {quizes: quizes});
-	}).catch(function(error){next(error);})
+	if (req.query.texto_buscar){
+		// Busca en las preguntas el texto introducido y las devuelve en orden alfabético
+		models.Quiz.findAll({where: ["quiz.pregunta like ?", "%req.query.texto_buscar%"] order:["quiz.pregunta","DESC"]}).then(function(quizes){
+			res.render('quizes/index.ejs', {quizes: quizes});			
+		}).catch(function(error){next(error);})
+	}
+	else{
+		models.Quiz.findAll().then(function(quizes){
+			res.render('quizes/index.ejs', {quizes: quizes});
+		}).catch(function(error){next(error);})
+	}
 };
 
 // GET quizes/show
@@ -32,3 +40,4 @@ exports.answer = function(req, res){
 	
 	res.render('quizes/answer', {quiz: req.quiz, respuesta: resultado});
 };
+
