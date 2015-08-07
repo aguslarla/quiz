@@ -48,15 +48,14 @@ exports.load = function(req, res, next, quizId){
 
 // GET /quizes
 exports.index = function(req, res){
-	models.Quiz.findAll().then(function(quiz){
+	models.Quiz.findAll().then(function(quizes){
 		res.render('quizes/index.ejs', {quizes:quizes})})
 };
 
 // GET quizes/show
 exports.show = function(req, res){
-	models.Quiz.find(req.params.quizId).then(function(quiz){
-		res.render('quizes/show', {quiz: req.quiz});	
-	})	
+	//models.Quiz.find(req.params.quizId).then(function(quiz){
+		res.render('quizes/show', {quiz: req.quiz})	
 };
 
 // GET quizes/answer
