@@ -25,6 +25,7 @@ var storage	=	"quiz.sqlite";
 console.log("models.js storage "+storage);
 
 // Carga modelo ORM
+console.log("Require sequelize");
 var Sequelize = require('sequelize');
 
 // Usar BD Sqlite o Postgres
@@ -53,9 +54,10 @@ sequelize.sync().success(function(){
 		// Se inicializa sólo si está vacía
 		if (count === 0){
 			Quiz.create({pregunta: 'Capital de Italia', 
-						respuesta: 'Roma'}).success(function(){console.log("base de datos inicializada")});
-			//Quiz.create({pregunta: 'Capital de Portugal', 
-			//			respuesta: 'Lisboa'});
+						respuesta: 'Roma'});
+			Quiz.create({pregunta: 'Capital de Portugal', 
+						respuesta: 'Lisboa'})
+			.then(function(){console.log("base de datos inicializada")});
 		};
 	});
 });
