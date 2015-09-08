@@ -8,12 +8,12 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Quiz' });
 });
 
-//router.param('quizId', quizController.load);
+// Autoload de comandos con :Id
+router.param('quizId', quizController.load);
 
 router.get('/quizes', quizController.index);
 router.get('/quizes/:quizId(\\d+)', quizController.show);
 router.get('/quizes/:quizId(\\d+)/answer', quizController.answer);
 router.get('/author', authorController.author);
-
 
 module.exports = router;
