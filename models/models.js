@@ -46,6 +46,7 @@ var Quiz = sequelize.import(quiz_path);
 exports.Quiz = Quiz;
 
 console.log("models.js Aqui llega 1");
+console.log("BD name",Quiz);
 // sequelize.sync crea e inicializa la tabla, en este caso de "preguntas", en la BD.
 /*sequelize.sync().success(function(){
 	console.log("models.js Aqui llega 2");
