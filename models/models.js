@@ -44,12 +44,8 @@ var sequelize = new Sequelize(null, null, null, {dialect : "sqlite",
 var quiz_path = path.join(__dirname, 'quiz');
 var Quiz = sequelize.import(quiz_path);
 exports.Quiz = Quiz;
-
-console.log("models.js Aqui llega 1");
-console.log("BD name",Quiz);
 // sequelize.sync crea e inicializa la tabla, en este caso de "preguntas", en la BD.
 /*sequelize.sync().success(function(){
-	console.log("models.js Aqui llega 2");
 	//success ejecuta el manejador una vez creada
 	Quiz.count().success(function (count){
 		// Se inicializa sólo si está vacía

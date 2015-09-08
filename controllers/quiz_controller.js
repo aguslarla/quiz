@@ -2,7 +2,11 @@ var models = require('../models/models.js');
 
 // Para que haga el AutoLoad
 exports.load = function(req, res, next, quizId){
-	models.Quizzes.find(quizId).then(function (quiz){
+	console.log("req",req);
+	console.log("res",res);
+	console.log("Id",quizId);
+	models.Quiz.find(quizId).then(function (quiz){
+		console.log("quiz",quiz);
 		if (quiz){
 			req.quiz = quiz;
 			next();
@@ -14,7 +18,11 @@ exports.load = function(req, res, next, quizId){
 
 // GET /quizes
 exports.index = function(req, res){
-	models.Quizzes.findAll().then(function(quiz){
+	console.log("req",req);
+	console.log("res",res);
+	models.Quiz.findAll().then(function(quiz){
+		console.log("quiz",quiz);
+		console.log("quizes",quizes);
 		res.render('quizes/questions.ejs', {quizes:quizes})})
 };
 
