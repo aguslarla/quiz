@@ -47,10 +47,25 @@ exports.Quiz = Quiz;
 
 console.log("models.js Aqui llega 1");
 // sequelize.sync crea e inicializa la tabla, en este caso de "preguntas", en la BD.
-sequelize.sync().success(function(){
+/*sequelize.sync().success(function(){
 	console.log("models.js Aqui llega 2");
 	//success ejecuta el manejador una vez creada
 	Quiz.count().success(function (count){
+		// Se inicializa sólo si está vacía
+		if (count === 0){
+			Quiz.create({pregunta: 'Capital de Italia', 
+						respuesta: 'Roma'});
+			Quiz.create({pregunta: 'Capital de Portugal', 
+						respuesta: 'Lisboa'})
+			.then(function(){console.log("base de datos inicializada")});
+		};
+	});
+});
+*/
+sequelize.sync().then(function(){
+	console.log("models.js Aqui llega 2");
+	//success ejecuta el manejador una vez creada
+	Quiz.count().then(function (count){
 		// Se inicializa sólo si está vacía
 		if (count === 0){
 			Quiz.create({pregunta: 'Capital de Italia', 
